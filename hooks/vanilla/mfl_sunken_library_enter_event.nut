@@ -1,4 +1,4 @@
-// Marks icy cavern as completed for mod purposes
+// Marks sunken_library as completed for mod purposes
 ::ModFindLegendaryMaps.Hooks.hook("scripts/events/events/dlc6/location/sunken_library_enter_event", function(q) {
     q.create = @(__original) function () {
         __original();

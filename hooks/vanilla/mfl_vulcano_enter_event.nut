@@ -1,4 +1,4 @@
-// Marks icy cavern as completed for mod purposes
+// Marks vulcano as completed for mod purposes
 ::ModFindLegendaryMaps.Hooks.hook("scripts/events/events/dlc6/location/vulcano_enter_event", function(q) {
     q.create = @(__original) function () {
         __original();

@@ -1,4 +1,4 @@
-// Marks icy cavern as completed for mod purposes
+// Marks legend_mummy as completed for mod purposes
 ::ModFindLegendaryMaps.Hooks.hook("scripts/events/events/legends/location/legend_mummy_enter_event", function(q) {
     q.create = @(__original) function () {
         __original();

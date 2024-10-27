@@ -1,4 +1,4 @@
-// Marks icy cavern as completed for mod purposes
+// Marks legend_tournament as completed for mod purposes
 ::ModFindLegendaryMaps.Hooks.hook("scripts/events/events/legends/legend_enter_wizard_tower_event", function(q) {
     q.create = @(__original) function () {
         __original();

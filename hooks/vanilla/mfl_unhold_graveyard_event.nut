@@ -1,4 +1,4 @@
-// Marks ancient statue as completed for mod purposes
+// Marks unhold_graveyard as completed for mod purposes
 ::ModFindLegendaryMaps.Hooks.hook("scripts/events/events/dlc2/location/unhold_graveyard_event", function(q) {
     q.create = @(__original) function () {
         __original();

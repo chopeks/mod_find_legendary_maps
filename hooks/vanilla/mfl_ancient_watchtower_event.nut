@@ -1,4 +1,4 @@
-// Marks ancient statue as completed for mod purposes
+// Marks ancient watchtower as completed for mod purposes
 ::ModFindLegendaryMaps.Hooks.hook("scripts/events/events/dlc2/location/ancient_watchtower_event", function(q) {
     q.create = @(__original) function () {
         __original();

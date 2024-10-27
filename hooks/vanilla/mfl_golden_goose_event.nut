@@ -1,4 +1,4 @@
-// Marks ancient statue as completed for mod purposes
+// Marks land_ship as completed for mod purposes
 ::ModFindLegendaryMaps.Hooks.hook("scripts/events/events/dlc2/location/golden_goose_event", function(q) {
     q.create = @(__original) function () {
         __original();

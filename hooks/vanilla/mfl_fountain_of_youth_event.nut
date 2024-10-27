@@ -1,4 +1,4 @@
-// Marks ancient statue as completed for mod purposes
+// Marks fountain_of_youth as completed for mod purposes
 ::ModFindLegendaryMaps.Hooks.hook("scripts/events/events/dlc2/location/fountain_of_youth_event", function(q) {
     q.create = @(__original) function () {
         __original();

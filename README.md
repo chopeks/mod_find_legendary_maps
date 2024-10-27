@@ -4,6 +4,7 @@ Works with vanilla, with included patches for Legends, SSU
 
 ### Current state:
 - Adds new item, a map,
+- Adds an event at the start of campaign to check if everything spawned properly,
 - An internal tracker for already visited locations,
 - Obtainable as guaranteed loot from vampire coven location (necrosavants + mummies in Legends),
 - In Legends, also obtainable on Black Market, if enabled in settings,
