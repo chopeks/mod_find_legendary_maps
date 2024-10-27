@@ -1,5 +1,5 @@
 ::ModFindLegendaryMaps <- {
-	ID = "",
+	ID = "mod_find_legendary_maps",
 	Name = "Find Legendary Location Maps",
 	Version = "0.1.0",
 	OnlySpawned = true,
