@@ -1,7 +1,7 @@
 ::ModFindLegendaryMaps <- {
 	ID = "mod_find_legendary_maps",
 	Name = "Find Legendary Location Maps",
-	Version = "0.1.1",
+	Version = "0.1.2",
 	OnlySpawned = true,
 	BlackMarket = false,
 	// other mods compat
@@ -67,7 +67,6 @@ mod.queue(">mod_msu", ">mod_modern_hooks", ">mod_legends", ">mod_sellswords", ">
 
 		settingBlackmarket.addCallback(function(_value) { ::ModFindLegendaryMaps.BlackMarket = _value; });
 
-		local locations = ::ModFindLegendaryMaps.Locations;
 		locations.push({ Target = "location.legend_mummy", Name = "Ancient Mastaba" });
 		locations.push({ Target = "location.legend_tournament", Name = "Tournament" });
 		locations.push({ Target = "location.legend_wizard_tower", Name = "Teetering Tower" });
