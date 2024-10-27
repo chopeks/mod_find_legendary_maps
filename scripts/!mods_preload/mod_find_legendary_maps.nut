@@ -1,9 +1,13 @@
 ::ModFindLegendaryMaps <- {
 	ID = "mod_find_legendary_maps",
 	Name = "Find Legendary Location Maps",
-	Version = "0.1.0",
+	Version = "0.1.1",
 	OnlySpawned = true,
 	BlackMarket = false,
+	// other mods compat
+	hasLegends = false,
+	hasSSU = false,
+	hasStronghold = false
 }
 
 ::ModFindLegendaryMaps.Locations <- []
@@ -12,15 +16,12 @@ local mod = ::Hooks.register(::ModFindLegendaryMaps.ID, ::ModFindLegendaryMaps.V
 
 ::ModFindLegendaryMaps.Hooks <- mod;
 
-mod.require("mod_msu >= 1.2.6", "mod_modern_hooks >= 0.4.0", "mod_stronghold >= 2.0.0", "mod_legends >= 18.1.0", "mod_sellswords >= 8.2.7");
+mod.require("mod_msu >= 1.2.6", "mod_modern_hooks >= 0.4.0");
 
-mod.queue(">mod_msu", ">mod_legends", ">mod_sellswords", ">mod_stronghold", function() {
+mod.queue(">mod_msu", ">mod_modern_hooks", ">mod_legends", ">mod_sellswords", ">mod_stronghold",  function() {
 	::ModFindLegendaryMaps.Mod <- ::MSU.Class.Mod(::ModFindLegendaryMaps.ID, ::ModFindLegendaryMaps.Version, ::ModFindLegendaryMaps.Name);
-	::ModFindLegendaryMaps.Mod.Registry.addModSource(::MSU.System.Registry.ModSourceDomain.GitHub, "https://github.com/chopeks/MakeLindwurmsGreatAgain");
+	::ModFindLegendaryMaps.Mod.Registry.addModSource(::MSU.System.Registry.ModSourceDomain.GitHub, "https://github.com/chopeks/mod_find_legendary_maps");
 	::ModFindLegendaryMaps.Mod.Registry.setUpdateSource(::MSU.System.Registry.ModSourceDomain.GitHub);
-
-	::ModFindLegendaryMaps.hasLegends <- ::mods_getRegisteredMod("mod_legends") != null;
-	::ModFindLegendaryMaps.hasSSU <- ::mods_getRegisteredMod("mod_sellswords") != null;
 
 	local page = ::ModFindLegendaryMaps.Mod.ModSettings.addPage("General");
 	local settingOnlySpawned = page.addBooleanSetting(
@@ -54,8 +55,9 @@ mod.queue(">mod_msu", ">mod_legends", ">mod_sellswords", ">mod_stronghold", func
 	foreach (file in ::IO.enumerateFiles("hooks/"))
 		::include(file);
 
-
+	::ModFindLegendaryMaps.hasLegends = ::mods_getRegisteredMod("mod_legends") != null;
 	if (::ModFindLegendaryMaps.hasLegends) {
+		::logInfo("Legends detected, applying patch");
 		local settingBlackmarket = page.addBooleanSetting(
 		"EnableBlackmarket",
 			false,
@@ -65,6 +67,7 @@ mod.queue(">mod_msu", ">mod_legends", ">mod_sellswords", ">mod_stronghold", func
 
 		settingBlackmarket.addCallback(function(_value) { ::ModFindLegendaryMaps.BlackMarket = _value; });
 
+		local locations = ::ModFindLegendaryMaps.Locations;
 		locations.push({ Target = "location.legend_mummy", Name = "Ancient Mastaba" });
 		locations.push({ Target = "location.legend_tournament", Name = "Tournament" });
 		locations.push({ Target = "location.legend_wizard_tower", Name = "Teetering Tower" });
@@ -72,7 +75,9 @@ mod.queue(">mod_msu", ">mod_legends", ">mod_sellswords", ">mod_stronghold", func
 			::include(file);
 	}
 
+	::ModFindLegendaryMaps.hasSSU = ::mods_getRegisteredMod("mod_sellswords") != null;
 	if (::ModFindLegendaryMaps.hasSSU) {
+		::logInfo("SSU detected, applying patch");
 		locations.push({ Target = "location.crorc_fortress", Name = "Fortress of the Warlord" });
 		locations.push({ Target = "location.kriegsgeist_castle", Name = "Kriegsgeist: Castle of Ghastly Screams" });
 		locations.push({ Target = "location.dryad_tree", Name = "Yggdrasil" });
@@ -81,9 +86,10 @@ mod.queue(">mod_msu", ">mod_legends", ">mod_sellswords", ">mod_stronghold", func
 			::include(file);
 	}
 
-//	local hasStronghold = ::mods_getRegisteredMod("mod_stronghold") != null;
-//	::logInfo("stronghold detected " + hasStronghold);
-//
+
+	::ModFindLegendaryMaps.hasStronghold = ::mods_getRegisteredMod("mod_stronghold") != null;
+	if (::ModFindLegendaryMaps.hasStronghold) {
+		::logInfo("Stronghold detected, applying patch");
 //	mod.hook("scripts/factions/stronghold_player_faction", function(q) {
 //		q.updateQuests = @(__original) function() {
 //			__original();
@@ -105,6 +111,7 @@ mod.queue(">mod_msu", ">mod_legends", ">mod_sellswords", ">mod_stronghold", func
 //			}
 //		}
 //	});
+	}
 
 	::ModFindLegendaryMaps.generateMap <- function() {
 		local notVisitedLocations = [];
