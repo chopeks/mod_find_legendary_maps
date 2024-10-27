@@ -82,6 +82,7 @@ this.mfl_legendary_map <- this.inherit("scripts/items/item", {
             return false;
         }
 
+        this.World.uncoverFogOfWar(location.getPos(), 250.0);
         this.Settings.getTempGameplaySettings().CameraLocked = false
         this.World.State.getMenuStack().popAll(true);
         this.World.getCamera().Zoom = 1.0;

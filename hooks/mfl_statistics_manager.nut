@@ -5,24 +5,9 @@
         __original(_in);
         this.m.LegendaryLocationsVisited = ::ModFindLegendaryMaps.Mod.Serialization
             .flagDeserialize("LegendaryLocationsVisited", this.m.LegendaryLocationsVisited, [], this.getFlags());
-        // todo remove, this is debug
-        local log = "deserialize visited ["
-        foreach(loc in this.m.LegendaryLocationsVisited) {
-            log = log + loc + ", ";
-        }
-        log = log + "]";
-        ::logInfo(log);
     }
 
     q.onSerialize = @(__original) function(_out) {
-        // todo remove, this is debug
-        local log = "serialize visited ["
-        foreach(loc in this.m.LegendaryLocationsVisited) {
-            log = log + loc + ", ";
-        }
-        log = log + "]";
-        ::logInfo(log);
-
         ::ModFindLegendaryMaps.Mod.Serialization
             .flagSerialize("LegendaryLocationsVisited",  this.m.LegendaryLocationsVisited, this.getFlags());
         __original(_out);
@@ -33,13 +18,6 @@
     }
 
     q.mfl_getVisitedLegendaryLocations <- function() {
-        // todo remove, this is debug
-        local log = "visited ["
-        foreach(loc in this.m.LegendaryLocationsVisited) {
-            log = log + loc + ", ";
-        }
-        log = log + "]";
-        ::logInfo(log);
         return this.m.LegendaryLocationsVisited;
     }
 

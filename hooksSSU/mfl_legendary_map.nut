@@ -1,4 +1,13 @@
 ::ModFindLegendaryMaps.Hooks.hook("scripts/items/misc/mfl_legendary_map", function(q) {
+    local locations = [
+        { Target = "location.crorc_fortress", Name = "Fortress of the Warlord" },
+        { Target = "location.kriegsgeist_castle", Name = "Kriegsgeist: Castle of Ghastly Screams" },
+        { Target = "location.dryad_tree", Name = "Yggdrasil" },
+        { Target = "location.crss_camp", Name = "Mercenary Camp" }
+    ];
+    foreach(it in locations)
+        ::ModFindLegendaryMaps.Locations.push(it);
+
     q.getLocationScript = @(__original) function (_typeID) {
         switch (_typeID) {
             case "location.crorc_fortress":

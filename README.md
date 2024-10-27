@@ -1,6 +1,6 @@
 Adds a map item into game, that, when used, centers at legendary location.
 
-Works with vanilla, with patches for Legends, SSU
+Works with vanilla, with included patches for Legends, SSU
 
 ### Current state:
 - Adds new item, a map,
@@ -10,12 +10,15 @@ Works with vanilla, with patches for Legends, SSU
 - Supported all legendary locations in vanilla,
 - Supported all legendary locations in Legends,
 - Supported all legendary locations in SSU,
+- Perpetual contract obtainable in Stronghold, if mod is present,
 - Safe to add to existing saves, but experimental option is as described...,
 - NOT SAFE to remove from existing saves
 
 ### Contributions
 Art courtesy of Evie Nekomancer ꜀(^. .^꜀ )꜆੭ @ BB Legends Discord. Thanks to Breaky, for keeping up with my bs.
 
+### For mod creators
+If you want to add your mods locations, you can easily do that by hooking this mod, take a look on hooksSSU/. For locations without battles or with complex event chains, take a look on hookLegends/
+
 ### TODO:
-- Perpetual contract obtainable in Stronghold, if mod is present
 - Figure out spawning for missing locations

@@ -1,4 +1,11 @@
 ::ModFindLegendaryMaps.Hooks.hook("scripts/items/misc/mfl_legendary_map", function(q) {
+    local locations = [
+        { Target = "location.legend_mummy", Name = "Ancient Mastaba" },
+        { Target = "location.legend_tournament", Name = "Tournament" },
+        { Target = "location.legend_wizard_tower", Name = "Teetering Tower" }
+    ];
+    foreach(it in locations)
+        ::ModFindLegendaryMaps.Locations.push(it);
 
     q.getLocationScript = @(__original) function (_typeID) {
         switch (_typeID) {
