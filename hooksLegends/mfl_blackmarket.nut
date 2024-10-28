@@ -7,6 +7,11 @@
                     P = 40.0, // 14k coins base
                     S = "misc/mfl_legendary_map"
                 });
+                _list.push({
+                    R = 0, // always spawn
+                    P = 4.0, // 1,4k coins base
+                    S = "misc/mfl_named_map"
+                });
             }
         }
         __original(_id, _list);
