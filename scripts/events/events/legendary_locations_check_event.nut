@@ -1,10 +1,10 @@
 this.legendary_locations_check_event <- this.inherit("scripts/events/event", {
     m = {},
-    function create()
-    {
+    function create() {
         this.m.ID = "event.legendary_locations_check_event";
         this.m.Title = "Your friendly legendary location check";
-        this.m.Cooldown = 60 * this.World.getTime().SecondsPerDay;
+        this.m.Cooldown = 600000 * this.World.getTime().SecondsPerDay;
+        this.m.Score = 0;
         this.m.Screens.push({
             ID = "A",
             Text = "[img]gfx/ui/events/event_16.png[/img]",
@@ -17,7 +17,6 @@ this.legendary_locations_check_event <- this.inherit("scripts/events/event", {
                     this.World.Flags.add("legendary_locations_check_event");
                     return 0;
                 }
-
             }
             ],
             function start( _event ) {
@@ -52,25 +51,16 @@ this.legendary_locations_check_event <- this.inherit("scripts/events/event", {
         });
     }
 
-    function onUpdateScore()
-    {
-        if (this.World.Flags.has("legendary_locations_check_event")) {
-            this.m.Score = 0;
-        } else {
-            this.m.Score = 20000;
-        }
+    function onUpdateScore() {
     }
 
-    function onPrepare()
-    {
+    function onPrepare() {
     }
 
-    function onPrepareVariables( _vars )
-    {
+    function onPrepareVariables( _vars ) {
     }
 
-    function onClear()
-    {
+    function onClear() {
     }
 
 });

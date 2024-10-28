@@ -1,7 +1,7 @@
 ::ModFindLegendaryMaps <- {
 	ID = "mod_find_legendary_maps",
 	Name = "Find Legendary Location Maps",
-	Version = "0.2.0",
+	Version = "0.2.1",
 	OnlySpawned = true,
 	BlackMarket = false,
 	// other mods compat
@@ -137,3 +137,8 @@ mod.queue(">mod_msu", ">mod_modern_hooks", ">mod_legends", ">mod_sellswords", ">
 		}
 	}
 });
+
+mod.queue(function () {
+	foreach (file in ::IO.enumerateFiles("hooksLast/"))
+		::include(file);
+}, ::Hooks.QueueBucket.Last);
