@@ -11,7 +11,7 @@ this.legendary_map_location_contract <- this.inherit("scripts/contracts/contract
 		this.createStates();
 		this.createScreens();
 		this.m.Type = "contract.legendary_map_location_contract";
-		this.m.Name = "Rescue scholars";
+		this.m.Name = "Scout report";
 		this.m.TimeOut = this.Time.getVirtualTimeF() + this.World.getTime().SecondsPerDay * 1500.0;
 	}
 
