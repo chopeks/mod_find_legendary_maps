@@ -1,7 +1,7 @@
 ::ModFindLegendaryMaps <- {
 	ID = "mod_find_legendary_maps",
 	Name = "Find Legendary Location Maps",
-	Version = "0.3.2",
+	Version = "0.3.3",
 	OnlySpawned = true,
 	BlackMarket = false,
 	// other mods compat
@@ -61,7 +61,7 @@ mod.queue(">mod_msu", ">mod_modern_hooks", ">mod_legends", ">mod_sellswords", ">
 	::ModFindLegendaryMaps.hasLegends = ::mods_getRegisteredMod("mod_legends") != null;
 	if (::ModFindLegendaryMaps.hasLegends) {
 		local settingBlackmarket = page.addBooleanSetting(
-		"EnableBlackmarket",
+			"EnableBlackmarket",
 			false,
 			"Available at blackmarket",
 			"Works, but there might be doubles available, keep that in mind."

@@ -1,18 +1,18 @@
 this.mfl_legendary_map <- this.inherit("scripts/items/item", {
     m = {
-        Target = "location.land_ship"
-        LocationName = "Curious Ship Wreck"
+        Target = null
+        LocationName = null
     },
     function create() {
         this.m.ID = "misc.mfl_legendary_map";
         this.m.Name = "Legendary location map";
         this.m.Icon = "legendary_map.png";
+        this.m.Description = "This map seems to have marked location and a lot of annotations. Right click to study it.";
         this.m.SlotType = this.Const.ItemSlot.None;
         this.m.ItemType = this.Const.Items.ItemType.Usable;
         this.m.IsUsable = true;
         this.m.IsDroppedAsLoot = true;
         this.m.Value = 350;
-        this.randomizeLocation();
     }
 
     function getBuyPrice() {
@@ -36,8 +36,13 @@ this.mfl_legendary_map <- this.inherit("scripts/items/item", {
     }
 
     function onUse( _actor, _item = null ) {
+        if (this.m.Target == null) {
+            this.randomizeLocation();
+            ::Tooltip.reload();
+        }
         if (this.m.Target == null)
-            return false;
+            return;
+
         local location = this.World.EntityManager.mfl_getSpawnedLegendaryLocation(this.m.Target);
         if (::ModFindLegendaryMaps.OnlySpawned) {
             if (location == null) {
