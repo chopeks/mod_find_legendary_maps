@@ -1,7 +1,7 @@
 ::ModFindLegendaryMaps <- {
 	ID = "mod_find_legendary_maps",
 	Name = "Find Legendary Location Maps",
-	Version = "0.3.3",
+	Version = "0.3.4",
 	OnlySpawned = true,
 	BlackMarket = false,
 	// other mods compat
@@ -131,7 +131,7 @@ mod.queue(">mod_msu", ">mod_modern_hooks", ">mod_legends", ">mod_sellswords", ">
 		}
 
 		if (filteredLocations.len() == 0) {
-			return { Target = null, Name = null }
+			return { Target = "x", Name = null }
 		} else {
 			return ::MSU.Array.rand(filteredLocations);
 		}

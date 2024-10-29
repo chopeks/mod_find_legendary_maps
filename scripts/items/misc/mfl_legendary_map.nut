@@ -1,7 +1,7 @@
 this.mfl_legendary_map <- this.inherit("scripts/items/item", {
     m = {
-        Target = null
-        LocationName = null
+        Target = ""
+        LocationName = ""
     },
     function create() {
         this.m.ID = "misc.mfl_legendary_map";
@@ -36,11 +36,13 @@ this.mfl_legendary_map <- this.inherit("scripts/items/item", {
     }
 
     function onUse( _actor, _item = null ) {
-        if (this.m.Target == null) {
+        if (this.m.Target == "") {
             this.randomizeLocation();
             ::Tooltip.reload();
         }
-        if (this.m.Target == null)
+        if (this.m.Target == "")
+            return;
+        if (this.m.Target == "x")
             return;
 
         local location = this.World.EntityManager.mfl_getSpawnedLegendaryLocation(this.m.Target);
@@ -100,7 +102,11 @@ this.mfl_legendary_map <- this.inherit("scripts/items/item", {
     function setLocation(_target, _name) {
         this.m.Target = _target;
         this.m.LocationName = _name;
-        if (this.m.Target == null) {
+        if (this.m.Target == "") {
+            this.m.IsUsable = true;
+            return;
+        }
+        if (this.m.Target == "x") {
             this.m.Name = "Old map";
             this.m.IsUsable = false;
             this.m.Description = "This map unfortunately is unreadable, though you may be able to find someone to pay hefty sum for it."
