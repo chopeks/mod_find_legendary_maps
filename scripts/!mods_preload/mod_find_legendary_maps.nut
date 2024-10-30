@@ -1,7 +1,7 @@
 ::ModFindLegendaryMaps <- {
 	ID = "mod_find_legendary_maps",
 	Name = "Find Legendary Location Maps",
-	Version = "0.3.4",
+	Version = "0.3.5",
 	OnlySpawned = true,
 	BlackMarket = false,
 	// other mods compat
@@ -55,7 +55,7 @@ mod.queue(">mod_msu", ">mod_modern_hooks", ">mod_legends", ">mod_sellswords", ">
 	foreach(it in locations)
 		::ModFindLegendaryMaps.Locations.push(it);
 
-	foreach (file in ::IO.enumerateFiles("hooks/"))
+	foreach (file in ::IO.enumerateFiles("mod_find_legendary_maps/hooks/"))
 		::include(file);
 
 	::ModFindLegendaryMaps.hasLegends = ::mods_getRegisteredMod("mod_legends") != null;
@@ -69,20 +69,20 @@ mod.queue(">mod_msu", ">mod_modern_hooks", ">mod_legends", ">mod_sellswords", ">
 
 		settingBlackmarket.addCallback(function(_value) { ::ModFindLegendaryMaps.BlackMarket = _value; });
 
-		foreach (file in ::IO.enumerateFiles("hooksLegends/"))
+		foreach (file in ::IO.enumerateFiles("mod_find_legendary_maps/hooksLegends/"))
 			::include(file);
 	}
 
 	::ModFindLegendaryMaps.hasSSU = ::mods_getRegisteredMod("mod_sellswords") != null;
 	if (::ModFindLegendaryMaps.hasSSU) {
-		foreach (file in ::IO.enumerateFiles("hooksSSU/"))
+		foreach (file in ::IO.enumerateFiles("mod_find_legendary_maps/hooksSSU/"))
 			::include(file);
 	}
 
 
 	::ModFindLegendaryMaps.hasStronghold = ::mods_getRegisteredMod("mod_stronghold") != null;
 	if (::ModFindLegendaryMaps.hasStronghold) {
-		foreach (file in ::IO.enumerateFiles("hooksStronghold/"))
+		foreach (file in ::IO.enumerateFiles("mod_find_legendary_maps/hooksStronghold/"))
 			::include(file);
 	}
 
@@ -139,6 +139,6 @@ mod.queue(">mod_msu", ">mod_modern_hooks", ">mod_legends", ">mod_sellswords", ">
 });
 
 mod.queue(function () {
-	foreach (file in ::IO.enumerateFiles("hooksLast/"))
+	foreach (file in ::IO.enumerateFiles("mod_find_legendary_maps/hooksLast/"))
 		::include(file);
-}, ::Hooks.QueueBucket.Last);
+}, ::Hooks.QueueBucket.Late);
