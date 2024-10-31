@@ -35,7 +35,7 @@ this.mfl_named_map <- this.inherit("scripts/items/item", {
         return this.item.getSellPrice();
     }
 
-    function setLocation(locationName) {
+    function setLocation() {
         if(this.m.Target != null && !this.m.Target.isNull()) {
             this.m.LocationName = this.m.Target.get().getName();
             this.m.Description = "This map points to a location with valuable loot. [color=" + ::Const.UI.Color.PositiveEventValue + "]" + this.m.LocationName + "[/color]"
@@ -75,7 +75,7 @@ this.mfl_named_map <- this.inherit("scripts/items/item", {
 
         local location = this.m.Target;
         if (this.m.Target != null && !this.m.Target.isNull()) {
-            setLocation(this.m.Target.getName());
+            setLocation();
 
             this.World.uncoverFogOfWar(location.getPos(), 250.0);
             this.Settings.getTempGameplaySettings().CameraLocked = false
@@ -105,6 +105,8 @@ this.mfl_named_map <- this.inherit("scripts/items/item", {
 			this.m.Target = null;
 		}
         this.item.onDeserialize(_in);
-        this.setLocation(this.m.Target.getName())
+        if (this.m.Target != null && !this.m.Target.isNull()) {
+            this.setLocation();
+        }
     }
 });
