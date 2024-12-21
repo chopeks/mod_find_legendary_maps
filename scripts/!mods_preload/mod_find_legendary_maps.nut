@@ -1,13 +1,14 @@
 ::ModFindLegendaryMaps <- {
 	ID = "mod_find_legendary_maps",
 	Name = "Find Legendary Location Maps",
-	Version = "0.3.6",
+	Version = "0.3.7",
 	OnlySpawned = true,
 	BlackMarket = false,
 	// other mods compat
 	hasLegends = false,
 	hasSSU = false,
-	hasStronghold = false
+	hasStronghold = false,
+	hasROTU = false,
 }
 
 ::ModFindLegendaryMaps.Locations <- []
@@ -17,8 +18,9 @@ local mod = ::Hooks.register(::ModFindLegendaryMaps.ID, ::ModFindLegendaryMaps.V
 ::ModFindLegendaryMaps.Hooks <- mod;
 
 mod.require("mod_msu >= 1.2.6", "mod_modern_hooks >= 0.4.0");
+mod.conflictWith("mod_legends < 19.0.0")
 
-mod.queue(">mod_msu", ">mod_modern_hooks", ">mod_legends", ">mod_sellswords", ">mod_stronghold",  function() {
+mod.queue(">mod_msu", ">mod_modern_hooks", ">mod_legends", ">mod_sellswords", ">mod_stronghold", ">mod_ROTU",  function() {
 	::ModFindLegendaryMaps.Mod <- ::MSU.Class.Mod(::ModFindLegendaryMaps.ID, ::ModFindLegendaryMaps.Version, ::ModFindLegendaryMaps.Name);
 	::ModFindLegendaryMaps.Mod.Registry.addModSource(::MSU.System.Registry.ModSourceDomain.GitHub, "https://github.com/chopeks/mod_find_legendary_maps");
 	::ModFindLegendaryMaps.Mod.Registry.setUpdateSource(::MSU.System.Registry.ModSourceDomain.GitHub);
@@ -74,7 +76,8 @@ mod.queue(">mod_msu", ">mod_modern_hooks", ">mod_legends", ">mod_sellswords", ">
 	}
 
 	::ModFindLegendaryMaps.hasSSU = ::mods_getRegisteredMod("mod_sellswords") != null;
-	if (::ModFindLegendaryMaps.hasSSU) {
+	::ModFindLegendaryMaps.hasROTU = ::mods_getRegisteredMod("mod_ROTU") != null;
+	if (::ModFindLegendaryMaps.hasSSU || ::ModFindLegendaryMaps.hasROTU) {
 		foreach (file in ::IO.enumerateFiles("mod_find_legendary_maps/hooksSSU/"))
 			::include(file);
 	}

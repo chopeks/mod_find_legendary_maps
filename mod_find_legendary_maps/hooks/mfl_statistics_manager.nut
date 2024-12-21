@@ -2,9 +2,9 @@
     q.m.LegendaryLocationsVisited <- []
 
     q.onDeserialize = @(__original) function(_in) {
-        __original(_in);
         this.m.LegendaryLocationsVisited = ::ModFindLegendaryMaps.Mod.Serialization
             .flagDeserialize("LegendaryLocationsVisited", this.m.LegendaryLocationsVisited, [], this.getFlags());
+        __original(_in);
     }
 
     q.onSerialize = @(__original) function(_out) {
