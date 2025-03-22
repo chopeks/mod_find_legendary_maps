@@ -24,7 +24,7 @@ this.legendary_map_location_contract <- this.inherit("scripts/contracts/contract
 	}
 	
 	function getBanner() {
-		return "ui/banners/factions/banner_05s"
+		return "ui/banners/factions/banner_05s";
 	}
 
 	function createStates()	{
@@ -148,7 +148,6 @@ this.legendary_map_location_contract <- this.inherit("scripts/contracts/contract
 			],
 			ShowObjectives = true,
 			ShowPayment = true,
-			ShowEmployer = true,
 			ShowDifficulty = false,
 			function start() {
 				this.Contract.m.IsNegotiated = true;

@@ -4,7 +4,7 @@ this.mfl_legendary_location_check <- this.inherit("scripts/items/item", {
         this.m.ID = "misc.mfl_legendary_location_check";
         this.m.Name = "Legendary location check";
         this.m.Icon = "location_check.png";
-        this.m.Description = "Generates an event, that checks if all legendary locations spawned. Right click to start."
+        this.m.Description = "Generates an event, that checks if all legendary locations spawned. Right click to start.";
         this.m.SlotType = this.Const.ItemSlot.None;
         this.m.ItemType = this.Const.Items.ItemType.Usable;
         this.m.IsUsable = true;

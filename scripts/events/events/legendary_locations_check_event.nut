@@ -37,13 +37,13 @@ this.legendary_locations_check_event <- this.inherit("scripts/events/event", {
                 }
 
                 if(missingLocations.len() == 0) {
-                    this.Text = "[img]gfx/ui/events/event_16.png[/img] All good. All locations spawned properly."
+                    this.Text = "[img]gfx/ui/events/event_16.png[/img] All good. All locations spawned properly.";
                 } else {
-                    local txt = "[img]gfx/ui/events/event_16.png[/img] These locations are missing:"
+                    local txt = "[img]gfx/ui/events/event_16.png[/img] These locations are missing:";
                     foreach (location in missingLocations) {
                         txt = txt + "\n" + location.Name;
                     }
-                    txt = txt + "\n\nIf you're not concerned about them, you can continue playing."
+                    txt = txt + "\n\nIf you're not concerned about them, you can continue playing.";
                     this.Text = txt
                 }
             }

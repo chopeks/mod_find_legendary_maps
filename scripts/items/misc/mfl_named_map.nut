@@ -1,6 +1,6 @@
 this.mfl_named_map <- this.inherit("scripts/items/item", {
     m = {
-        Target = null
+        Target = null,
         LocationName = ""
     },
     function create() {
@@ -38,7 +38,7 @@ this.mfl_named_map <- this.inherit("scripts/items/item", {
     function setLocation() {
         if(this.m.Target != null && !this.m.Target.isNull()) {
             this.m.LocationName = this.m.Target.get().getName();
-            this.m.Description = "This map points to a location with valuable loot. [color=" + ::Const.UI.Color.PositiveEventValue + "]" + this.m.LocationName + "[/color]"
+            this.m.Description = "This map points to a location with valuable loot. [color=" + ::Const.UI.Color.PositiveEventValue + "]" + this.m.LocationName + "[/color]";
         }
     }
 
@@ -69,7 +69,7 @@ this.mfl_named_map <- this.inherit("scripts/items/item", {
                 }
             }
             if (bestLocation != null) {
-                this.m.Target = this.WeakTableRef(bestLocation)
+                this.m.Target = this.WeakTableRef(bestLocation);
             }
         }
 
@@ -78,7 +78,7 @@ this.mfl_named_map <- this.inherit("scripts/items/item", {
             setLocation();
 
             this.World.uncoverFogOfWar(location.getPos(), 250.0);
-            this.Settings.getTempGameplaySettings().CameraLocked = false
+            this.Settings.getTempGameplaySettings().CameraLocked = false;
             this.World.State.getMenuStack().popAll(true);
             this.World.getCamera().Zoom = 1.0;
             this.World.getCamera().setPos(location.getPos());

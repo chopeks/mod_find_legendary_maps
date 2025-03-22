@@ -1,7 +1,7 @@
 ::ModFindLegendaryMaps <- {
 	ID = "mod_find_legendary_maps",
 	Name = "Find Legendary Location Maps",
-	Version = "0.3.7",
+	Version = "0.4.0",
 	OnlySpawned = true,
 	BlackMarket = false,
 	// other mods compat
@@ -11,14 +11,14 @@
 	hasROTU = false,
 }
 
-::ModFindLegendaryMaps.Locations <- []
+::ModFindLegendaryMaps.Locations <- [];
 
 local mod = ::Hooks.register(::ModFindLegendaryMaps.ID, ::ModFindLegendaryMaps.Version, ::ModFindLegendaryMaps.Name);
 
 ::ModFindLegendaryMaps.Hooks <- mod;
 
 mod.require("mod_msu >= 1.2.6", "mod_modern_hooks >= 0.4.0");
-mod.conflictWith("mod_legends < 19.0.0")
+mod.conflictWith("mod_legends < 19.0.0");
 
 mod.queue(">mod_msu", ">mod_modern_hooks", ">mod_legends", ">mod_sellswords", ">mod_stronghold", ">mod_ROTU",  function() {
 	::ModFindLegendaryMaps.Mod <- ::MSU.Class.Mod(::ModFindLegendaryMaps.ID, ::ModFindLegendaryMaps.Version, ::ModFindLegendaryMaps.Name);
@@ -52,7 +52,9 @@ mod.queue(">mod_msu", ">mod_modern_hooks", ">mod_legends", ">mod_sellswords", ">
 		{ Target = "location.witch_hut", Name = "Witch Hut" },
 		{ Target = "location.holy_site.meteorite", Name = "The Fallen Star" },
 		{ Target = "location.holy_site.oracle", Name = "The Oracle" },
-		{ Target = "location.holy_site.vulcano", Name = "The Ancient City" }
+		{ Target = "location.holy_site.vulcano", Name = "The Ancient City" },
+		{ Target = "location.abandoned_village", Name = "Abandoned Village" },
+		{ Target = "location.holy_site.vulcano", Name = "Artifact Reliquary" }
 	];
 	foreach(it in locations)
 		::ModFindLegendaryMaps.Locations.push(it);

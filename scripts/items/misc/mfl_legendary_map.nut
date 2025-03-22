@@ -1,6 +1,6 @@
 this.mfl_legendary_map <- this.inherit("scripts/items/item", {
     m = {
-        Target = ""
+        Target = "",
         LocationName = ""
     },
     function create() {
@@ -40,8 +40,10 @@ this.mfl_legendary_map <- this.inherit("scripts/items/item", {
             this.randomizeLocation();
             ::Tooltip.reload();
         }
+
         if (this.m.Target == "")
             return;
+
         if (this.m.Target == "x")
             return;
 
@@ -90,7 +92,7 @@ this.mfl_legendary_map <- this.inherit("scripts/items/item", {
         }
 
         this.World.uncoverFogOfWar(location.getPos(), 250.0);
-        this.Settings.getTempGameplaySettings().CameraLocked = false
+        this.Settings.getTempGameplaySettings().CameraLocked = false;
         this.World.State.getMenuStack().popAll(true);
         this.World.getCamera().Zoom = 1.0;
         this.World.getCamera().setPos(location.getPos());
@@ -109,7 +111,7 @@ this.mfl_legendary_map <- this.inherit("scripts/items/item", {
         if (this.m.Target == "x") {
             this.m.Name = "Old map";
             this.m.IsUsable = false;
-            this.m.Description = "This map unfortunately is unreadable, though you may be able to find someone to pay hefty sum for it."
+            this.m.Description = "This map unfortunately is unreadable, though you may be able to find someone to pay hefty sum for it.";
         } else {
             this.m.Name = "Legendary location map";
             this.m.IsUsable = true;
@@ -119,7 +121,7 @@ this.mfl_legendary_map <- this.inherit("scripts/items/item", {
 
     function randomizeLocation() {
         local location = ::ModFindLegendaryMaps.generateMap();
-        this.setLocation(location.Target, location.Name)
+        this.setLocation(location.Target, location.Name);
     }
 
     function onSerialize( _out ) {
@@ -132,7 +134,7 @@ this.mfl_legendary_map <- this.inherit("scripts/items/item", {
         local target = _in.readString();
         local locationName = _in.readString();
         this.item.onDeserialize(_in);
-        this.setLocation(target, locationName)
+        this.setLocation(target, locationName);
     }
 
     function getTileToSpawnLocation(_maxTries = 500, _notOnTerrain = [], _minDistToSettlements = 7, _maxDistToSettlements = 1000, _maxDistanceToAllies = 1000, _minDistToEnemyLocations = 7, _minDistToAlliedLocations = 7, _nearTile = null, _minY = 0.0, _maxY = 1.0 ) {
@@ -320,6 +322,10 @@ this.mfl_legendary_map <- this.inherit("scripts/items/item", {
                 return "scripts/entity/world/locations/legendary/oracle_location";
             case "location.holy_site.vulcano":
                 return "scripts/entity/world/locations/legendary/vulcano_location";
+            case "location.abandoned_village":
+                return "scripts/entity/world/locations/legendary/abandoned_village_location";
+            case "location.artifact_reliquary":
+                return "scripts/entity/world/locations/legendary/artifact_reliquary_location";
             default:
                 return null;
         }
@@ -429,6 +435,17 @@ this.mfl_legendary_map <- this.inherit("scripts/items/item", {
             case "location.holy_site.vulcano":
                 return [
                     this.Const.World.TerrainType.Desert
+                ];
+            case "location.abandoned_village":
+                return [
+                    this.Const.World.TerrainType.Plains,
+                    this.Const.World.TerrainType.Tundra
+                ];
+            case "location.artifact_reliquary":
+                return [
+                    this.Const.World.TerrainType.Plains,
+                    this.Const.World.TerrainType.Steppe,
+                    this.Const.World.TerrainType.Tundra
                 ];
             default:
                 return null;

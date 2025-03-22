@@ -1,5 +1,5 @@
 ::ModFindLegendaryMaps.Hooks.hook("scripts/statistics/statistics_manager", function(q) {
-    q.m.LegendaryLocationsVisited <- []
+    q.m.LegendaryLocationsVisited <- [];
 
     q.onDeserialize = @(__original) function(_in) {
         this.m.LegendaryLocationsVisited = ::ModFindLegendaryMaps.Mod.Serialization
@@ -23,7 +23,7 @@
 
     q.mfl_getNotVisitedLegendaryLocations <- function() {
         local visitedLocations = this.m.LegendaryLocationsVisited;
-        local list = []
+        local list = [];
         foreach(location in ::ModFindLegendaryMaps.Locations) {
             if (!(location in visitedLocations)) {
                 list.push(location)

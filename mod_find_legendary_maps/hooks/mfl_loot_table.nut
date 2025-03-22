@@ -14,7 +14,8 @@ local namedMapLocations = [
     "scripts/entity/world/locations/nomad_ruins_location",
     "scripts/entity/world/locations/nomad_tent_city_location",
     "scripts/entity/world/locations/nomad_tents_location"
-]
+];
+
 foreach (location in namedMapLocations) {
     ::ModFindLegendaryMaps.Hooks.hook(location, function(q) {
         q.onDropLootForPlayer = @(__original) function (_lootTable) {
