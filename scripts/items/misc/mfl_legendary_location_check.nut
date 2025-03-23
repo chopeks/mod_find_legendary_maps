@@ -1,6 +1,7 @@
 this.mfl_legendary_location_check <- this.inherit("scripts/items/item", {
     m = {},
     function create() {
+        this.item.create();
         this.m.ID = "misc.mfl_legendary_location_check";
         this.m.Name = "Legendary location check";
         this.m.Icon = "location_check.png";

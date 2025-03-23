@@ -4,6 +4,7 @@ this.mfl_legendary_map <- this.inherit("scripts/items/item", {
         LocationName = ""
     },
     function create() {
+        this.item.create();
         this.m.ID = "misc.mfl_legendary_map";
         this.m.Name = "Legendary location map";
         this.m.Icon = "legendary_map.png";

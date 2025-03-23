@@ -4,6 +4,7 @@ this.mfl_named_map <- this.inherit("scripts/items/item", {
         LocationName = ""
     },
     function create() {
+        this.item.create();
         this.m.ID = "misc.mfl_named_map";
         this.m.Name = "Scout report";
         this.m.Description = "This map points to a location with valuable loot.";

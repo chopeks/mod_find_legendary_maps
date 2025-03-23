@@ -1,7 +1,7 @@
 ::ModFindLegendaryMaps <- {
 	ID = "mod_find_legendary_maps",
 	Name = "Find Legendary Location Maps",
-	Version = "0.4.0",
+	Version = "0.4.1",
 	OnlySpawned = true,
 	BlackMarket = false,
 	// other mods compat
