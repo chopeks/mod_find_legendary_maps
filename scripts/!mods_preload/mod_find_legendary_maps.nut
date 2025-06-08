@@ -1,14 +1,13 @@
 ::ModFindLegendaryMaps <- {
 	ID = "mod_find_legendary_maps",
 	Name = "Find Legendary Location Maps",
-	Version = "0.4.1",
+	Version = "0.4.2",
 	OnlySpawned = true,
 	BlackMarket = false,
 	// other mods compat
 	hasLegends = false,
 	hasSSU = false,
 	hasStronghold = false,
-	hasROTU = false,
 }
 
 ::ModFindLegendaryMaps.Locations <- [];
@@ -78,8 +77,7 @@ mod.queue(">mod_msu", ">mod_modern_hooks", ">mod_legends", ">mod_sellswords", ">
 	}
 
 	::ModFindLegendaryMaps.hasSSU = ::mods_getRegisteredMod("mod_sellswords") != null;
-	::ModFindLegendaryMaps.hasROTU = ::mods_getRegisteredMod("mod_ROTU") != null;
-	if (::ModFindLegendaryMaps.hasSSU || ::ModFindLegendaryMaps.hasROTU) {
+	if (::ModFindLegendaryMaps.hasSSU) {
 		foreach (file in ::IO.enumerateFiles("mod_find_legendary_maps/hooksSSU/"))
 			::include(file);
 	}
