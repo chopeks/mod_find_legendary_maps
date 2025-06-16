@@ -1,7 +1,7 @@
 ::ModFindLegendaryMaps <- {
 	ID = "mod_find_legendary_maps",
 	Name = "Find Legendary Location Maps",
-	Version = "0.5.1",
+	Version = "0.5.2",
 	OnlySpawned = true,
 	BlackMarket = false,
 	// other mods compat
@@ -53,7 +53,7 @@ mod.queue(">mod_msu", ">mod_modern_hooks", ">mod_legends", ">mod_sellswords", ">
 		{ Target = "location.holy_site.oracle", Name = "The Oracle" },
 		{ Target = "location.holy_site.vulcano", Name = "The Ancient City" },
 		{ Target = "location.abandoned_village", Name = "Abandoned Village" },
-		{ Target = "location.holy_site.vulcano", Name = "Artifact Reliquary" }
+		{ Target = "location.artifact_reliquary", Name = "Artifact Reliquary" }
 	];
 	foreach(it in locations)
 		::ModFindLegendaryMaps.Locations.push(it);
